@@ -17,21 +17,36 @@ namespace ProgressBarWithText
 			InitializeComponent();
 			this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint,true);
             this.DoubleBuffered = true;
-			//初始化所有值
-			_maxValue = 100;
+
+            #region  初始化所有值
+            //最大值
+            _maxValue = 100;
+            //当前值
 			_value = 0;
+            //文本对齐方式
 			_position = TextAlignmentStyle.Center;
+            //进度条背景色
             _BackColor = Color.FromArgb(255, 230, 230, 230);
+            //前景色
 			_ForeColor = Color.Green;
+            //背景矩形
 			_BackRect = this.ClientRectangle;
+            //前景矩形
 			_ForeRect = this.ClientRectangle;
 			_Rect = this.ClientRectangle;
-			_Font = new Font(FontFamily.GenericSansSerif,10);
-			_UseDecimal = false;
+            //字体
+			_Font = new Font(FontFamily.GenericSansSerif,9);
+            //不使用浮点数
+            _UseDecimal = false;
+            //文本呈现方式
             _DisplayMode = ValueDisplayMode.Percent;
+            //尺寸
+            this.Size = new Size(50, 20);
+            ShowText = true;
+            #endregion
 
-			//宽度改变时重绘
-			this.SizeChanged += (sender, e) => OnPaint(new PaintEventArgs(this.CreateGraphics(),this.ClientRectangle));
+            //宽度改变时重绘
+            this.SizeChanged += (sender, e) => OnPaint(new PaintEventArgs(this.CreateGraphics(),this.ClientRectangle));
 			
 		}
 		#endregion
