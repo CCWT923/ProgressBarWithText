@@ -77,12 +77,6 @@ namespace ProgressBarWithText
         //是否显示文本
         private bool _ShowText;
 
-        //进度条值改变事件，文本位置改变事件，数字显示方式改变事件
-        //private event EventHandler OnValueChanged, OnTextAliegnChanged, OnValueDisplayModeChanged;
-        //不使用Timer作为检测值是否改变的方式，而是在某些属性被设置之后调用OnPaint()事件
-
-
-
         #endregion
 
         #region 枚举值
