@@ -41,7 +41,7 @@ namespace ProgressBarWithText
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ProgressBarWithText";
-            this.Size = new System.Drawing.Size(293, 27);
+            this.Size = new System.Drawing.Size(198, 27);
             this.ResumeLayout(false);
 
 		}
