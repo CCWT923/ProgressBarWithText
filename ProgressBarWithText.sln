@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressBarWithText", "ProgressBarWithText.csproj", "{A601E8E0-B6EC-470D-9A57-AD801EE0A527}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressBarWithTextDemo", "..\ProgressBarWithTextDemo\ProgressBarWithTextDemo.csproj", "{29684E0B-2281-4149-916D-27754463D6D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A601E8E0-B6EC-470D-9A57-AD801EE0A527}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A601E8E0-B6EC-470D-9A57-AD801EE0A527}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A601E8E0-B6EC-470D-9A57-AD801EE0A527}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29684E0B-2281-4149-916D-27754463D6D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29684E0B-2281-4149-916D-27754463D6D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29684E0B-2281-4149-916D-27754463D6D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29684E0B-2281-4149-916D-27754463D6D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

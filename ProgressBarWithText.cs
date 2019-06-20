@@ -36,6 +36,7 @@ namespace ProgressBarWithText
 			_Rect = this.ClientRectangle;
             //字体
 			_Font = new Font(FontFamily.GenericSansSerif,9);
+            _FontColor = Color.Black;
             //不使用浮点数
             _UseDecimal = false;
             //文本呈现方式
@@ -66,6 +67,8 @@ namespace ProgressBarWithText
 		private Color _ForeColor;
 		//字体
 		private Font _Font;
+        //字体颜色
+        private Color _FontColor;
 		//文本所在的位置
 		private TextAlignmentStyle _position;
 		//客户区域矩形
@@ -264,6 +267,22 @@ namespace ProgressBarWithText
             }
 		}
         /// <summary>
+        /// 文本颜色
+        /// </summary>
+        [Category("外观")]
+        public Color FontColor
+        {
+            get
+            {
+                return _FontColor;
+            }
+            set
+            {
+                _FontColor = value;
+                this.OnPaint(new PaintEventArgs(this.CreateGraphics(), this.ClientRectangle));
+            }
+        }
+        /// <summary>
         /// 进度条值的显示方式，文本还是值
         /// </summary>
         public ValueDisplayMode DisplayMode
@@ -315,7 +334,8 @@ namespace ProgressBarWithText
                 strCurrentPercent = string.Format("{0}/{1}", _value, _maxValue);
             }
             if(_ShowText == true)
-            { 
+            {
+                var brush = new SolidBrush(_FontColor);
                 //文本的尺寸
 			    SizeF textSize = g.MeasureString(strCurrentPercent,_Font);
                 //var textSize = path.GetBounds();
@@ -323,19 +343,19 @@ namespace ProgressBarWithText
 			    if(_position == TextAlignmentStyle.Left)
 			    {
 				    //左对齐
-				    g.DrawString(strCurrentPercent, _Font,Brushes.Black,
+				    g.DrawString(strCurrentPercent, _Font,brush,
 				                  _BackRect.X,_BackRect.Height / 2 - textSize.Height / 2);
 			    }
 			    else if(_position == TextAlignmentStyle.Right)
 			    {
 				    //右对齐
-				    g.DrawString(strCurrentPercent, _Font,Brushes.Black,
+				    g.DrawString(strCurrentPercent, _Font, brush,
 				                 _BackRect.Width - textSize.Width,_BackRect.Height / 2 - textSize.Height / 2);
 			    }
 			    else
 			    {
 				    //居中对齐
-				    g.DrawString(strCurrentPercent, _Font, Brushes.Black,
+				    g.DrawString(strCurrentPercent, _Font, brush,
 				                _BackRect.Width / 2 - textSize.Width / 2, _BackRect.Height / 2 - textSize.Height / 2);
 			    }
             }
