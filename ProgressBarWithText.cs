@@ -41,6 +41,8 @@ namespace ProgressBarWithText
             _UseDecimal = false;
             //文本呈现方式
             _DisplayMode = ValueDisplayMode.Percent;
+            //小数点数
+            Precision = 2;
             //尺寸
             this.Size = new Size(50, 20);
             ShowText = true;
@@ -79,6 +81,10 @@ namespace ProgressBarWithText
         private ValueDisplayMode _DisplayMode;
         //是否显示文本
         private bool _ShowText;
+        //小数点的位数
+        private int _Precision;
+        //小数点位数的最大值
+        private int _MaxPrecision = 10;
 
         #endregion
 
@@ -171,11 +177,33 @@ namespace ProgressBarWithText
                 this.OnPaint(new PaintEventArgs(this.CreateGraphics(), this.ClientRectangle));
             }
         }
-		
-		/// <summary>
-		/// 设置进度条上文本的对齐方式
-		/// </summary>
-		[System.ComponentModel.Description("文本的对齐方式")]
+        /// <summary>
+        /// 设置小数点的位数，允许范围：0-10
+        /// </summary>
+        [Description("小数点位数"),Category("行为")]
+        public int Precision
+        {
+            get
+            {
+                return _Precision;
+            }
+            set
+            {
+                if(value < 0 || value > _MaxPrecision)
+                {
+                    _Precision = 2;
+                }
+                else
+                {
+                    _Precision = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 设置进度条上文本的对齐方式
+        /// </summary>
+        [System.ComponentModel.Description("文本的对齐方式")]
         [Category("外观")]
 		public TextAlignmentStyle TextAlignment
 		{
@@ -319,7 +347,7 @@ namespace ProgressBarWithText
             
             if (_UseDecimal == true && _DisplayMode == ValueDisplayMode.Percent )
             {
-                strCurrentPercent = string.Format("{0:F2}%",(decimal)_value / _maxValue * 100);
+                strCurrentPercent = string.Format("{0:F" + Precision + "}%",(decimal)_value / _maxValue * 100);
             }
             else if(_UseDecimal == false && _DisplayMode == ValueDisplayMode.Percent)
             {
