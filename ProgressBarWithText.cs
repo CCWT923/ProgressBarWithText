@@ -151,12 +151,26 @@ namespace ProgressBarWithText
         [Description("进度条上的前置文本"),Category("外观")]
         public string PreText
         {
-            get;set;
+            get
+            {
+                return _PreText;
+            }
+            set
+            {
+                _PreText = value;
+            }
         }
         [Description("进度条上的附加文本"), Category("外观")]
         public string AdditionalText
         {
-            get;set;
+            get
+            {
+                return _Additionaltext;
+            }
+            set
+            {
+                _Additionaltext = value;
+            }
         }
 
         [DefaultValue("1.0"),ReadOnly(true),Browsable(false)]
