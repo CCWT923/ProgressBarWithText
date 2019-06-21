@@ -85,6 +85,10 @@ namespace ProgressBarWithText
         private int _Precision;
         //小数点位数的最大值
         private int _MaxPrecision = 10;
+        //前置文本
+        private string _PreText = "";
+        //附加文本
+        private string _Additionaltext = "";
 
         #endregion
 
@@ -144,10 +148,21 @@ namespace ProgressBarWithText
         #endregion
 
         #region 自定义的属性
+        [Description("进度条上的前置文本"),Category("外观")]
+        public string PreText
+        {
+            get;set;
+        }
+        [Description("进度条上的附加文本"), Category("外观")]
+        public string AdditionalText
+        {
+            get;set;
+        }
+
         [DefaultValue("1.0"),ReadOnly(true),Browsable(false)]
         public string Version
         {
-            get { return "1.0" + ", " + System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location).ToString(); }
+            get { return "1.5" + ", " + System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location).ToString(); }
         }
 
         [DefaultValue("W.T"),ReadOnly(true), Browsable(false)]
@@ -361,6 +376,10 @@ namespace ProgressBarWithText
             {
                 strCurrentPercent = string.Format("{0}/{1}", _value, _maxValue);
             }
+            
+            //附加文本
+            strCurrentPercent = PreText + strCurrentPercent + AdditionalText;
+
             if(_ShowText == true)
             {
                 var brush = new SolidBrush(_FontColor);
